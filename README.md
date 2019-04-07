@@ -26,7 +26,7 @@ Last class, you registered for a Flickr API key. Tonight you will build an app t
 
 ---
 
-## LocalLandscapes: Let's Get to Building! (25 min) - [7:00 ]
+## LocalLandscapes: Let's Get to Building! (25 min)
 
 On list of [Flickr endpoints](https://www.flickr.com/services/api):
 
@@ -71,7 +71,7 @@ is associated with which access token.  -->
 
 ---
 
-## Starter Code Review (5 min) - [ 7:30 ]
+## Starter Code Review (5 min)
 
 Alright, now that all our app configuration is setup, go ahead and open the starter code in your text editor.
 
@@ -260,7 +260,7 @@ _500px.on('authorization_obtained', function() {
 
 ---
 
-## Get User's Location (20 min) - [ 8:30 ]
+## Get User's Location (20 min)
 
 <!-- > Ask what we've done so far (initialized the SDK and logged in) -->
 
@@ -313,8 +313,7 @@ Then after you allow the app to know your location, check your console for the `
 ---
 
 <a name = "codealong3"></a>
-## Call Flickr Endpoint (10 min) - [ 8:50 ]
-
+## Call Flickr Endpoint (10 min)
 > What does the code we've written so far do? (get user's lat and long)
 
 Now that we have the info we need to ping our Flickr endpoint (lat, long), let's make an API request for local photos!
@@ -384,7 +383,7 @@ Now that we have the info we need to ping our Flickr endpoint (lat, long), let's
 
 ---
 
-## Handle Response: Independent Practice (15 min) - [ 9:00 ]
+## Handle Response: Independent Practice (15 min)
 
 - Now that we can successfully call upon the Flickr API for resources, it is up to you to define the `handleResponseSuccess` callback function. 
 - What's the data type of the data being returned? Check the [Example Response section](https://www.flickr.com/services/api/flickr.photos.search.html)
@@ -452,4 +451,4 @@ Bonus 3 (challenging): Implement OAuth and display the current user’s informat
 
 ---
 
-## Final questions &amp; exit tickets (10 min) - [ 9:20 ]
+## Final questions &amp; exit tickets (10 min)
