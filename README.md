@@ -274,7 +274,7 @@ Let's go back to the documentation for the endpoint we identified, [photos.searc
 
 <br>
 
-###### Geolocation
+### Geolocation
 
 Modern browsers offer a [`navigator` object](https://developer.mozilla.org/en-US/docs/Web/API/Navigator)  which we can use to get location data. Google `mdn navigator` then open the documentation and outline it for students.
 
@@ -398,7 +398,7 @@ Now that we have the info we need to ping our Flickr endpoint (lat, long), let's
 
 > Ask for a volunteer to summarize the instructions.
 
-#### Handle Response Review
+### Handle Response Review
 
 ```js
 function handleResponseSuccess(response) {
