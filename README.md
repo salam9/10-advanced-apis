@@ -34,7 +34,7 @@ On list of [Flickr endpoints](https://www.flickr.com/services/api):
 - Give class a couple minutes to explore the list, and drill down into at least 2 endpoints
 - Then ask them to see if they can locate the one we need today — which will let us find photos based on a user’s location? 
 
-<!-- (flickr.photos.search)
+<!-- (flickr.photos.search)`
 
 https://www.flickr.com/services/api/flickr.photos.search.html -->
 
@@ -45,13 +45,13 @@ https://www.flickr.com/services/api/flickr.photos.search.html -->
 
 <!-- - The first step in working with a third-party API that requires authentication is to register your application with the API. 
 - The purpose of this is so that the API, in this case 500px, can give our app credentials to use in future requests so it can recognize who is asking for what information.  -->
-- The first steps is to register your application with the API and get a key
+<!-- - The first step is to register your application with the API and get a key
 - Does anyone not have a Flickr user account? If not, please sign up for one right now at flickr.com
 - Next we're going to go to the App Garden page and register an application. https://www.flickr.com/services/apps/create/
-- This will give us an API key.
+- This will give us an API key. -->
 
 
-You should now see the application you created on your Apps By You page. 
+We signed up for an Flickr API in the last class. You should now see the application you created on your Apps By You page:
 
 https://www.flickr.com/services/apps/by/me
 
@@ -64,19 +64,20 @@ is associated with which access token.  -->
 - In order to avoid getting our traffic throttled tonight and being unable to test our apps, we're all going to use the same API key, which is mine.
 - I will send it out in Slack when the time comes to add it to our apps
 -->
-- Who can remind us why it's not good practice to share API keys? (you're responsible for how other people use your key, and may get your account shut down)
+##### Who can remind us why it's not good practice to share API keys? 
+
+<!-- (you're responsible for how other people use your key, and may get your account shut down) -->
 <!-- - [JavaScript SDK](https://github.com/500px/500px-js-sdk) documentation - send link out in Slack so students can refer to it as we go -->
 
 ---
 
 ## Starter Code Review (5 min) - [ 7:30 ]
 
-Alright, now that all our app configuration is setup, go ahead and open the starter code.
+Alright, now that all our app configuration is setup, go ahead and open the starter code in your text editor.
 
-- `index.html`: HTML file with Bootstrap and jQuery libraries made available via CDNs. 
-- CSS and JS files connected. 
-- The CSS styling gives our app some very basic styling and the `app.js` file doesn't contain any code...yet. 
-- The HTML file references a js/keys.js file. Create that now, and create a variable called <code>apiKey</code>, then copy your API key from the Flickr website as the value and save the file.
+- You have an `index.html`: HTML file with Bootstrap and jQuery libraries made available via CDNs. The CSS and JS files are connected. 
+  - The CSS styling gives our app some very basic styling and the `app.js` file doesn't contain any code...yet. 
+- The HTML file references a `js/keys.js` file. Create that now, and create a variable called <code>apiKey</code>, then copy your API key from the Flickr website as the value and save the file.
 <!-- - `500px.js` is the SDK/client library for 500px.com. 
 - `callback.html` is a file that's part of the client library and that will facilitate cross domain communication with their API. 
 - Don't worry, there's no need to modify either of these files.  -->
@@ -103,7 +104,7 @@ The body of our HTML file contains:
 - Initially, only the top div, `.sign-in-view`, will show and be used for our user to perform OAuth.
 - Upon redirect, only the bottom parent div, `.image-results-view`, will show with a whole bunch of 500px images appended to `.images` (this syntax denotes a div with a class "images"). -->
 
----
+
 <!-- 
 ## 500px OAuth (35 min) - [ 7:35 ]
 
@@ -129,6 +130,11 @@ Great, now that our app is up and running, let's set up the OAuth so we can get 
 - The first thing we'll need to do is initialize the SDK. 
 - The SDK is documented here: https://github.com/500px/500px-js-sdk
 - Open this page, scroll down to the init code, and review it, then implement it. -->
+
+<br>
+
+##### `app.js`
+
 - Open `app.js` in your editor 
 - We want to wait until the DOM has finished loading before our code is parsed and run.
 - How do we do that with jQuery?
@@ -141,6 +147,7 @@ $(function() {
   
 });
 ```
+
 <!-- // Not needed as long as we're whitelisted
 - Post SDK key to Slack and have everyone use the same key. Stress that this is important, or we may all have our access cut off tonight.
 -->
@@ -257,22 +264,22 @@ _500px.on('authorization_obtained', function() {
 
 <!-- > Ask what we've done so far (initialized the SDK and logged in) -->
 
-- Remember, our app design is to find posted landscape photos based off our user's location. 
-- So what information do we need to get? ( user's location )
+Remember, our app design is to find posted landscape photos based off our user's location. So what information do we need to get? ( user's location )
 
-- Let's go back to the documentation for the endpoint we identified, [photos.search](https://www.flickr.com/services/api/flickr.photos.search.html). 
-- location search requires latitude, longitude, and radius
-- to specify that we want landscapes, we need to use the `tags` parameter 
-- these are the only requirements we've outlined for the Flickr content we want our project
+Let's go back to the documentation for the endpoint we identified, [photos.search](https://www.flickr.com/services/api/flickr.photos.search.html). The Location search requires latitude, longitude, and radius. To specify that we want landscapes, we need to use the `tags` parameter. These are the only requirements we've outlined for the Flickr content we want in our project.
+
 <!-- - The client library (SDK) takes care of sending the access token on its own so we don't need to worry about doing that ourselves.  -->
 
-- Modern browsers offer a [`navigator` object](https://developer.mozilla.org/en-US/docs/Web/API/Navigator)  which we can use to get location data. 
-- Google `mdn navigator` then open the documentation and outline it for students
-- Let's go ahead and further our conditional logic to grab the user's location after they've successfully logged in.
 
-- Start with `if/else`, then fill in `getCurrentPosition` code
+<br>
 
-```javascript
+###### Geolocation
+
+Modern browsers offer a [`navigator` object](https://developer.mozilla.org/en-US/docs/Web/API/Navigator)  which we can use to get location data. Google `mdn navigator` then open the documentation and outline it for students.
+
+Let's go ahead and further our conditional logic to grab the user's location after they open the app. Start with `if/else`, then fill in `getCurrentPosition` code.
+
+```js
 ...
 
 
@@ -291,17 +298,17 @@ _500px.on('authorization_obtained', function() {
 ...
 ```
 
-- The first thing we do is check to see if the browser has the `navigator.geolocation` object we need. 
-- Then if it does we can go ahead and call on its method `getCurrentPosition`. 
-- `getCurrentPostion` takes a callback as an argument which will return a `position` object. 
-- `position` contains a `coords` object which will have the latitude and longitude values we're looking for. 
+- The first thing we do is check to see if the browser has the `navigator.geolocation` object we need. Then if it does we can go ahead and call on its method `getCurrentPosition`. 
+  - `getCurrentPostion` takes a callback as an argument which will return a `position` object. 
+  - `position` contains a `coords` object which will have the latitude and longitude values we're looking for. 
 
-- Reload the page in the browser, click the Login button if necessary
-- Point out the Geolocation prompt
-- Work with students to troubleshoot if not everyone is seeing the prompt
-  - Try a different browser
-  - Clear cookies
-- Then after you allow the app to know your location, check your console for the `console.log` statements.
+Reload the page in the browser and notice the Geolocation prompt. If you're having issues:
+- Try a different browser
+- Clear cookies
+
+Then after you allow the app to know your location, check your console for the `console.log` statements.
+
+<br>
 
 ---
 
@@ -310,11 +317,13 @@ _500px.on('authorization_obtained', function() {
 
 > What does the code we've written so far do? (get user's lat and long)
 
-- Now that we have the info we need to ping our Flickr endpoint (lat, long), let's make an API request for local photos!
+Now that we have the info we need to ping our Flickr endpoint (lat, long), let's make an API request for local photos!
+
 - Open the [endpoint documentation](https://www.flickr.com/services/api/flickr.photos.search.html)
-- Open Postman, paste in the base URL, then add properties one by one and test the results
+
+<!-- - Open Postman, paste in the base URL, then add properties one by one and test the results
 - Examine the format for `geo` then construct the property
-- Examine the format for `only` then construct the property
+- Examine the format for `only` then construct the property -->
 - look at the structure of returned data
 - whiteboard the structure
 - navigate through together to find the info we want: `photos.photo.length`
@@ -379,13 +388,11 @@ _500px.on('authorization_obtained', function() {
 
 - Now that we can successfully call upon the Flickr API for resources, it is up to you to define the `handleResponseSuccess` callback function. 
 - What's the data type of the data being returned? Check the [Example Response section](https://www.flickr.com/services/api/flickr.photos.search.html)
-- What's the structure of the data being returned? If we didn't whiteboard this earlier, open in Postman and do it here
+- What's the structure of the data being returned? 
 - Your function should iterate through your response data, creating an image element each time with the given image url from the API. 
 - Add a class `image` to the image and append it to `.images` which already exists in the HTML. 
 - Once again, use as much jQuery as possible.
 - Check out [jquery.each()](https://api.jquery.com/jQuery.each/), which is similar to but different from the `.each()` method we used earlier.
-- Point out usage of `this` and give an example
-- May need to outline/pseudocode this with class, or with individual students
 
 ***hint:*** The data you're looking for is somewhere in `response.photos`.
 
@@ -447,9 +454,6 @@ Bonus 2: Instead of landscapes, return photos from a different category (see po
 
 Bonus 3 (challenging): Implement OAuth and display the current user’s information on the site after a successful login. See authentication documentation at https://www.flickr.com/services/api/auth.oauth.html and the jso library at https://github.com/andreassolberg/jso.
 
-> If OAuth doesn't work, look at extensions. My first stab at this with 500px didn't work because of my extensions.
-> It also won't work if third-party cookies are disallowed
-> In Chrome, Preferences (scroll to bottom) > Advanced > Privacy & Security > Content Settings > Cookies > turn off "Block third party cookies"
 
 ---
 
