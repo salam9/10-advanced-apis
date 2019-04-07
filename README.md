@@ -430,21 +430,16 @@ function handleResponseSuccess(response) {
 }
 ```
 
-- And your app should be rendering the response images!
-
+And your app should be rendering the response images!
 
 ---
 
 ## API Exploration: Independent Practice (20 min)
 
-- IF THERE'S A FEW MINUTES, GO OVER THIS WITH STUDENTS, AND HAVE PEOPLE BRAINSTORM TOGETHER WHERE TO LOOK TO FIGURE OUT HOW TO DO THIS
-- THEN LOOK AT THE DOCS TOGETHER
-
 - Let's get some more practice with reading API documentation and customizing our search results. 
 - Take a look at the search documentation and modify our API request to also: 
-
-* Return 30 photos instead of the default 100
-* Sort results by relevance
+  - Return 30 photos instead of the default 100
+  - Sort results by relevance
 
 #### Bonus
 
