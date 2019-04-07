@@ -32,12 +32,13 @@ On list of [Flickr endpoints](https://www.flickr.com/services/api):
 
 - Ask students to pair up (not for programming, just for this exercise)
 - Give class a couple minutes to explore the list, and drill down into at least 2 endpoints
-- Then ask them to see if they can locate the one we need today — which will let us find photos based on a user’s location? 
+- Which endpoint will let us find photos based on a user’s location? 
+
+![](https://i.imgur.com/of3RO9m.png)
 
 <!-- (flickr.photos.search)`
 
 https://www.flickr.com/services/api/flickr.photos.search.html -->
-
 - We can see that as long as we pass certain query values (latitude, longitude, radius and category) we will be given a response containing the landscape photos we want.
 - Awesome! Now that we know our app idea is doable, let's start setting it up.
 
